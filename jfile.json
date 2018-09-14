@@ -1,0 +1,270 @@
+{
+	"id": "5b98474cde2ea33f4602f62f",
+	"name": "TestBoard",
+	"desc": "",
+	"descData": null,
+	"closed": false,
+	"idOrganization": "5b71bf31c3a9ce04f35d2f75",
+	"invited": false,
+	"limits": {
+		"attachments": {
+			"perBoard": {
+				"status": "ok",
+				"disableAt": 34200,
+				"warnAt": 32400
+			}
+		},
+		"boards": {
+			"totalMembersPerBoard": {
+				"status": "ok",
+				"disableAt": 1520,
+				"warnAt": 1440
+			}
+		},
+		"cards": {
+			"openPerBoard": {
+				"status": "ok",
+				"disableAt": 4750,
+				"warnAt": 4500
+			},
+			"totalPerBoard": {
+				"status": "ok",
+				"disableAt": 1900000,
+				"warnAt": 1800000
+			}
+		},
+		"checklists": {
+			"perBoard": {
+				"status": "ok",
+				"disableAt": 1900000,
+				"warnAt": 1800000
+			}
+		},
+		"customFields": {
+			"perBoard": {
+				"status": "ok",
+				"disableAt": 48,
+				"warnAt": 45
+			}
+		},
+		"labels": {
+			"perBoard": {
+				"status": "ok",
+				"disableAt": 950,
+				"warnAt": 900
+			}
+		},
+		"lists": {
+			"openPerBoard": {
+				"status": "ok",
+				"disableAt": 475,
+				"warnAt": 450
+			},
+			"totalPerBoard": {
+				"status": "ok",
+				"disableAt": 2850,
+				"warnAt": 2700
+			}
+		}
+	},
+	"pinned": false,
+	"starred": false,
+	"url": "https://trello.com/b/wXZjq6D8/testboard",
+	"prefs": {
+		"permissionLevel": "org",
+		"voting": "disabled",
+		"comments": "members",
+		"invitations": "members",
+		"selfJoin": true,
+		"cardCovers": true,
+		"cardAging": "regular",
+		"calendarFeedEnabled": false,
+		"background": "sky",
+		"backgroundImage": null,
+		"backgroundImageScaled": null,
+		"backgroundTile": false,
+		"backgroundBrightness": "dark",
+		"backgroundColor": "#00AECC",
+		"backgroundBottomColor": "#00AECC",
+		"backgroundTopColor": "#00AECC",
+		"canBePublic": true,
+		"canBeOrg": true,
+		"canBePrivate": true,
+		"canInvite": true
+	},
+	"invitations": [],
+	"shortLink": "wXZjq6D8",
+	"subscribed": false,
+	"labelNames": {
+		"green": "",
+		"yellow": "",
+		"orange": "",
+		"red": "",
+		"purple": "",
+		"blue": "",
+		"sky": "",
+		"lime": "",
+		"pink": "",
+		"black": ""
+	},
+	"powerUps": [],
+	"dateLastActivity": null,
+	"dateLastView": "2018-09-13T01:54:31.956Z",
+	"shortUrl": "https://trello.com/b/wXZjq6D8",
+	"idTags": [],
+	"datePluginDisable": null,
+	"creationMethod": null,
+	"actions": [{
+		"id": "5b9847547aafbc4212cc31b8",
+		"idMemberCreator": "5b71c696311f123b5bf6db7d",
+		"data": {
+			"board": {
+				"shortLink": "wXZjq6D8",
+				"name": "TestBoard",
+				"id": "5b98474cde2ea33f4602f62f"
+			},
+			"list": {
+				"name": "Hello!",
+				"id": "5b9847547aafbc4212cc31b7"
+			}
+		},
+		"type": "createList",
+		"date": "2018-09-11T22:53:08.420Z",
+		"limits": {},
+		"memberCreator": {
+			"id": "5b71c696311f123b5bf6db7d",
+			"avatarHash": null,
+			"avatarUrl": null,
+			"fullName": "kung",
+			"initials": "K",
+			"username": "kung47"
+		}
+	}, {
+		"id": "5b98474cde2ea33f4602f632",
+		"idMemberCreator": "5b71c696311f123b5bf6db7d",
+		"data": {
+			"organization": {
+				"name": "Controls",
+				"id": "5b71bf31c3a9ce04f35d2f75"
+			},
+			"board": {
+				"shortLink": "wXZjq6D8",
+				"name": "TestBoard",
+				"id": "5b98474cde2ea33f4602f62f"
+			}
+		},
+		"type": "addToOrganizationBoard",
+		"date": "2018-09-11T22:53:00.955Z",
+		"limits": {},
+		"memberCreator": {
+			"id": "5b71c696311f123b5bf6db7d",
+			"avatarHash": null,
+			"avatarUrl": null,
+			"fullName": "kung",
+			"initials": "K",
+			"username": "kung47"
+		}
+	}, {
+		"id": "5b98474cde2ea33f4602f631",
+		"idMemberCreator": "5b71c696311f123b5bf6db7d",
+		"data": {
+			"board": {
+				"shortLink": "wXZjq6D8",
+				"name": "TestBoard",
+				"id": "5b98474cde2ea33f4602f62f"
+			}
+		},
+		"type": "createBoard",
+		"date": "2018-09-11T22:53:00.952Z",
+		"limits": {},
+		"memberCreator": {
+			"id": "5b71c696311f123b5bf6db7d",
+			"avatarHash": null,
+			"avatarUrl": null,
+			"fullName": "kung",
+			"initials": "K",
+			"username": "kung47"
+		}
+	}],
+	"cards": [],
+	"labels": [{
+		"id": "5b98474c9c16fb124a47ba14",
+		"idBoard": "5b98474cde2ea33f4602f62f",
+		"name": "",
+		"color": "green"
+	}, {
+		"id": "5b98474c9c16fb124a47ba15",
+		"idBoard": "5b98474cde2ea33f4602f62f",
+		"name": "",
+		"color": "orange"
+	}, {
+		"id": "5b98474c9c16fb124a47ba16",
+		"idBoard": "5b98474cde2ea33f4602f62f",
+		"name": "",
+		"color": "yellow"
+	}, {
+		"id": "5b98474c9c16fb124a47ba17",
+		"idBoard": "5b98474cde2ea33f4602f62f",
+		"name": "",
+		"color": "red"
+	}, {
+		"id": "5b98474c9c16fb124a47ba23",
+		"idBoard": "5b98474cde2ea33f4602f62f",
+		"name": "",
+		"color": "blue"
+	}, {
+		"id": "5b98474c9c16fb124a47ba25",
+		"idBoard": "5b98474cde2ea33f4602f62f",
+		"name": "",
+		"color": "purple"
+	}],
+	"lists": [{
+		"id": "5b9847547aafbc4212cc31b7",
+		"name": "Hello!",
+		"closed": false,
+		"idBoard": "5b98474cde2ea33f4602f62f",
+		"pos": 65535,
+		"subscribed": false,
+		"limits": {
+			"cards": {
+				"openPerList": {
+					"status": "ok",
+					"disableAt": 4750,
+					"warnAt": 4500
+				},
+				"totalPerList": {
+					"status": "ok",
+					"disableAt": 950000,
+					"warnAt": 900000
+				}
+			}
+		}
+	}],
+	"members": [{
+		"id": "5b71c696311f123b5bf6db7d",
+		"avatarHash": null,
+		"avatarUrl": null,
+		"bio": "",
+		"bioData": null,
+		"confirmed": true,
+		"fullName": "kung",
+		"idEnterprisesDeactivated": [],
+		"idPremOrgsAdmin": [],
+		"initials": "K",
+		"memberType": "normal",
+		"products": [],
+		"status": "disconnected",
+		"url": "https://trello.com/kung47",
+		"username": "kung47"
+	}],
+	"checklists": [],
+	"customFields": [],
+	"memberships": [{
+		"id": "5b98474cde2ea33f4602f630",
+		"idMember": "5b71c696311f123b5bf6db7d",
+		"memberType": "admin",
+		"unconfirmed": false,
+		"deactivated": false
+	}],
+	"pluginData": []
+}
