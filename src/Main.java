@@ -5,29 +5,15 @@ import java.io.*;
 //import org.json.simple.JSONObject;
 
 public class Main {
-    public static void main(String[] args)
-    {
-        File data = new File("C:\\Users\\heuve\\Desktop\\file.txt");
-        String dataString = "";
-        try {
-            if(!data.exists()){
-                data.createNewFile();
-            }
-            InputStream i = new FileInputStream(data);
-            byte[] in = new byte[(int)data.length()];
-            i.read(in);
-            dataString = new String(in);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws IOException {
 
-        JSONObject trial = new JSONObject(dataString);
-        System.out.println(trial.getJSONObject("name").get("first"));
-        System.out.println(trial.getJSONObject("actions").get("id"));
-//ljlkjldkasd I THINK I DID IT?
+            FileInputStream fstream = new FileInputStream("C:\\Users\\kungl\\Desktop\\jfile.json");
+        BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+        JSONObject trial = new JSONObject(br.readLine());
+        System.out.println(trial.getString("id"));
 
 
-        //CHANGE
+
 
 
 
