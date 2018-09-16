@@ -1,26 +1,33 @@
 import org.json.*;
-import java.util.*;
+
 import java.io.*;
+//import org.json.simple.JSONArray;
+//import org.json.simple.JSONObject;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        FileInputStream fstream = new FileInputStream("C:\\Users\\kungl\\Desktop\\jfile.json");
-        BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
-        ArrayList<String> twoadd = new ArrayList<>();
-        String[] addtoo;
-        String[] tooadd = null;
-        addtoo = br.readLine().split(",");
-        //for (int i = 0; i < addtoo.length; i++) {
-            //System.out.println(addtoo[i]);
-        //}
-        for(int i = 0; i < addtoo.length; i++) {
-            tooadd = addtoo[i].split(":");
-            for(int a = 0; a < tooadd.length; a++)
-            twoadd.add(tooadd[a]);
+    public static void main(String[] args)
+    {
+        File data = new File("C:\\Users\\heuve\\Desktop\\file.txt");
+        String dataString = "";
+        try {
+            if(!data.exists()){
+                data.createNewFile();
+            }
+            InputStream i = new FileInputStream(data);
+            byte[] in = new byte[(int)data.length()];
+            i.read(in);
+            dataString = new String(in);
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-        for(int i = 0; i < twoadd.size(); i++) {
-            System.out.println(twoadd.get(i));
-        }
+
+        JSONObject trial = new JSONObject(dataString);
+        System.out.println(trial.getJSONObject("name").get("first"));
+        System.out.println(trial.getJSONObject("actions").get("id"));
+//ljlkjldkasd I THINK I DID IT?
+
+
+        //CHANGE
 
 
     }
