@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JSONReader.iml" filepath="$PROJECT_DIR$/JSONReader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KG_Repo.iml" filepath="$PROJECT_DIR$/KG_Repo.iml" />
     </modules>
   </component>
 </project>
