@@ -1,5 +1,7 @@
 import java.io.*;
 import org.json.*;
+
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Card {
@@ -7,10 +9,12 @@ public class Card {
     private String id;
     private String name;
     private String currentList;
+    private String description;
     private HashMap<String, String> comments;
     private ArrayList<String> members;
     private ArrayList<String> labels;
     private ArrayList<String> masterRecord;
+    private ArrayList<String> attachments;
 
     public Card(String timeStamp, String id, String name, String currentList) {
         masterRecord = new ArrayList<>();
@@ -21,12 +25,17 @@ public class Card {
         comments = new HashMap<>();
         members = new ArrayList<>();
         labels = new ArrayList<>();
+        attachments = new ArrayList<>();
 
     }
 
-    public void addMember(String timeStamp, String memberName) {
-        addToRecord(timeStamp,""+formatName(memberName)+" added to task.");
+    public void addMember(String timeStamp,String sourceName, String memberName) {
+        addToRecord(timeStamp,""+formatName(memberName)+" added to task by "+formatName(sourceName)+".");
         members.add(memberName);
+    }
+
+    public void removeMember(String timeStamp, String sourceName, String memberName){
+        addToRecord(timeStamp, formatName(memberName)+" removed from task by "+formatName(sourceName)+".");
     }
 
     public void changeList(String timeStamp, String newList){
@@ -35,10 +44,20 @@ public class Card {
     }
 
     public void addComment(String timeStamp, String memberName, String content){
-        addToRecord(timeStamp,formatName(memberName)+" commented \""+content+"\".");
+        addToRecord(timeStamp,formatName(memberName)+" commented \""+content.replace("\n","")+"\".");
         comments.put(memberName,content);
     }
 
+    public void addDescription(String timeStamp, String memberName, String content) {
+        addToRecord(timeStamp, formatName(memberName)+" added description the description \""+content+"\".");
+        description = content;
+    }
+
+    public void addAttachment(String timeStamp, String sourceMember, String url){
+        addToRecord(timeStamp, formatName(sourceMember)+ " added attachment <>"+url+"<>.");
+        attachments.add(url);
+    }
+    
     public void changeLabels(String timeStamp, String[] labelList){
         String listOfLabels = labelList[0];
         for(int i = 1; i < labelList.length; i++) listOfLabels +=", "+labelList[i];
@@ -48,6 +67,8 @@ public class Card {
     }
 
     public String getId(){return id;}
+    public String getName(){return name;}
+    public ArrayList<String> getRecord(){return masterRecord;}
 
     private void addToRecord(String timeStamp, String contents){
         masterRecord.add(formatDate(timeStamp)+":"+contents);
