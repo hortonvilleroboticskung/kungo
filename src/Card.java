@@ -36,6 +36,7 @@ public class Card {
 
     public void removeMember(String timeStamp, String sourceName, String memberName){
         addToRecord(timeStamp, formatName(memberName)+" removed from task by "+formatName(sourceName)+".");
+        members.remove(memberName);
     }
 
     public void changeList(String timeStamp, String newList){
@@ -57,13 +58,19 @@ public class Card {
         addToRecord(timeStamp, formatName(sourceMember)+ " added attachment <>"+url+"<>.");
         attachments.add(url);
     }
-    
-    public void changeLabels(String timeStamp, String[] labelList){
+
+    public void addLabel(String content){
+        labels.add(content);
+    }
+
+    public ArrayList<String> getLabels(){return labels;}
+
+    public void changeLabels(String timeStamp, String[] labelList) {
         String listOfLabels = labelList[0];
-        for(int i = 1; i < labelList.length; i++) listOfLabels +=", "+labelList[i];
-        addToRecord(timeStamp, "Tagged as "+listOfLabels+".");
+        for (int i = 1; i < labelList.length; i++) listOfLabels += ", " + labelList[i];
+        addToRecord(timeStamp, "Tagged as " + listOfLabels + ".");
         labels.clear();
-        for(String s : labelList) labels.add(s);
+        for (String s : labelList) labels.add(s);
     }
 
     public String getId(){return id;}
