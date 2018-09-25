@@ -1,4 +1,6 @@
 import org.json.*;
+
+import java.awt.*;
 import java.util.*;
 import java.io.*;
 import java.util.function.Consumer;
@@ -34,7 +36,16 @@ public class Main {
                     currentCard.changeList(obj.getString("date"), obj.getJSONObject("data").getJSONObject("list").getString("name"));
 
                 } else if(obj.getString("type").equals("commentCard")) {
-                    currentCard.addComment(obj.getString("date"),obj.getJSONObject("memberCreator").getString("fullName"),obj.getJSONObject("data").getString("text"));
+                        String comment = obj.getJSONObject("data").getString("text");
+                        currentCard.addComment(obj.getString("date"),obj.getJSONObject("memberCreator").getString("fullName"),comment);
+                        String[] date = comment.split("/|\\)");
+                        if(date.length==3){
+                            int day = Integer.parseInt(date[1]);
+                            int month = Integer.parseInt(date[0].substring(1));
+                            System.out.println(month+"-"+day);
+                            System.out.println(date[0]);
+                        }
+
 
                 } else if(obj.getString("type").equals("removeMemberFromCard")){
                     currentCard.removeMember(obj.getString("date"),obj.getJSONObject("memberCreator").getString("fullName"),obj.getJSONObject("data").getJSONObject("member").getString("name"));
@@ -68,16 +79,34 @@ public class Main {
         cards.entrySet().iterator().forEachRemaining(new Consumer<Map.Entry<String, Card>>() {
             @Override
             public void accept(Map.Entry<String, Card> stringCardEntry) {
-                File out = new File(stringCardEntry.getValue().getName()+".html");
+
                 try {
-                    if (!out.exists()) out.createNewFile();
-                    FileOutputStream fOut = new FileOutputStream(out);
+                    File folder = new File(System.getProperty("user.home")+"/Desktop/TrelloCardOutput");
+                    if (!folder.exists()) folder.mkdirs();
+                    File out = new File(folder,stringCardEntry.getValue().getName()+".html");
+
+                    FileOutputStream fOut = new FileOutputStream(out,true);
+                    FileOutputStream fClear = new FileOutputStream(out);
+
+                    fClear.write("".getBytes());
+                    fClear.flush();
+                    fClear.close();
 
                     fOut.write("<!--DOCTYPE HTML--><html><body>".getBytes());
 
                     fOut.write(("<h1>"+stringCardEntry.getValue().getName()+"</h1>").getBytes());
 
-                    fOut.write(("<h3>").getBytes());
+                    Card c = stringCardEntry.getValue();
+                    c.getRecord().sort(null);
+                    String currDate = "";
+                    for(String entry : c.getRecord()) {
+                        String[] splitEntry = entry.split(":");
+                        if(!splitEntry[0].equals(currDate)){
+                            fOut.write(("<h3>"+splitEntry[0]+"</h3>").getBytes());
+                            currDate = splitEntry[0];
+                        }
+
+                    }
 
                     fOut.write("</body></html>".getBytes());
                     fOut.flush();
