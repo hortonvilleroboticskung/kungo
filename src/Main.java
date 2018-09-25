@@ -68,6 +68,21 @@ public class Main {
         cards.entrySet().iterator().forEachRemaining(new Consumer<Map.Entry<String, Card>>() {
             @Override
             public void accept(Map.Entry<String, Card> stringCardEntry) {
+                File out = new File(stringCardEntry.getValue().getName()+".html");
+                try {
+                    if (!out.exists()) out.createNewFile();
+                    FileOutputStream fOut = new FileOutputStream(out);
+
+                    fOut.write("<!--DOCTYPE HTML--><html><body>".getBytes());
+
+                    fOut.write(("<h1>"+stringCardEntry.getValue().getName()+"</h1>").getBytes());
+
+                    fOut.write(("<h3>").getBytes());
+
+                    fOut.write("</body></html>".getBytes());
+                    fOut.flush();
+                    fOut.close();
+                }catch(Exception e){e.printStackTrace();}
                 System.out.println(stringCardEntry.getValue().getName()+"->"+stringCardEntry.getValue().getRecord());
                 System.out.println(stringCardEntry.getValue().getLabels());
             }
