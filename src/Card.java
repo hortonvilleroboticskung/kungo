@@ -55,7 +55,7 @@ public class Card {
     }
 
     public void addAttachment(String timeStamp, String sourceMember, String url){
-        addToRecord(timeStamp, formatName(sourceMember)+ " added attachment <>"+url+"<>.");
+        addToRecord(timeStamp, formatName(sourceMember)+ " added attachment:<>"+url);
         attachments.add(url);
     }
 
@@ -78,7 +78,7 @@ public class Card {
     public ArrayList<String> getRecord(){return masterRecord;}
 
     private void addToRecord(String timeStamp, String contents){
-        masterRecord.add(formatDate(timeStamp)+":"+contents);
+        masterRecord.add(formatDate(timeStamp)+"#~#"+contents);
     }
 
     private String formatName(String name){
