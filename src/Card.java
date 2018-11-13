@@ -1,7 +1,13 @@
 import java.io.*;
+
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.metadata.Metadata;
 import org.json.*;
 
 import java.lang.reflect.Array;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.*;
 
 public class Card {
@@ -55,6 +61,15 @@ public class Card {
     }
 
     public void addAttachment(String timeStamp, String sourceMember, String url){
+        try {
+            URL u = new URL(url);
+            URLConnection c = u.openConnection();
+            Metadata metadata = ImageMetadataReader.readMetadata(c.getInputStream());
+            //System.out.println("Metadata: " + metadata.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         addToRecord(timeStamp, formatName(sourceMember)+ " added attachment:<>"+url);
         attachments.add(url);
     }
