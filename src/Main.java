@@ -47,22 +47,28 @@ public class Main {
 
                     else if(objType.equals("commentCard")) {
                         String comment = objData.getString("text");
-                        if(comment.substring(0,1).equals("(") && comment.contains(")")){
+                        if(comment.substring(0,1).equals("(") && comment.contains(")")) {
                             String[] date = comment.split("/|\\)");
+
                             String day = date[1];
                             String month = date[0].substring(1);
                             String year = "";
-
-                            if(Integer.parseInt(month) >= 1 || Integer.parseInt(month) <= 12){
-                                if(Integer.parseInt(month) < 7) year = "2019";
+                            if (Integer.parseInt(month) >= 1 || Integer.parseInt(month) <= 12) {
+                                if (Integer.parseInt(month) < 7) year = "2019";
                                 else year = "2018";
                             }
 
-                            if(month.length() == 1) month = "0" + month;
-                            if(day.length() == 1) day = "0" + day;
+                            if (month.length() == 1) month = "0" + month;
+                            if (day.length() == 1) day = "0" + day;
 
-                            currentCard.addComment(year+"-"+month+"-"+day+"T",memberName,date[2].trim());
-                        }else currentCard.addComment(objDate,memberName,comment.trim());
+                            currentCard.addComment(year + "-" + month + "-" + day + "T", memberName, date[2].trim());
+                        }else if(comment.split("\\[.+\\]\\(.+\\)").length==2){
+                            currentCard.addComment(objDate,memberName,comment.split("\\[.+\\]\\(.+\\)")[1].trim());
+                        } else {
+//                            String[] a = comment.split("\\[.+\\]\\(.+\\)");
+//                            if(a.length==2)System.out.println(a[1]);
+                            currentCard.addComment(objDate, memberName, comment.trim());
+                        }
                     }
 
                     else if(objType.equals("removeMemberFromCard")){
@@ -144,7 +150,6 @@ public class Main {
                                     +"<br><img style=\"height:auto;width:auto;\" src=\""+splitEntry[1].split("<>")[1]+"\">").getBytes());
                         }else {
                             fOut.write(("<li>" + splitEntry[1] + "</li>").getBytes());
-
                         }
                     }
 
