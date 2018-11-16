@@ -1,5 +1,6 @@
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.metadata.Metadata;
+import com.drew.metadata.MetadataReader;
 import com.drew.metadata.exif.ExifIFD0Directory;
 import org.json.*;
 import java.awt.*;
@@ -205,6 +206,12 @@ public class Main {
                             currDate = splitEntry[0];
                         }
                         if(splitEntry[1].contains("<>")){
+                            try{
+                                URL url = new URL(splitEntry[1].split("<>")[1]);
+                               // Metadata meta = MetadataReader(url.openStream());
+                            }catch(Exception e){
+                                e.printStackTrace();
+                            }
                             fOut.write(("<li>"+splitEntry[1].split("<>")[0]
                                     +"<br><img style=\"height:auto;width:auto;\" src=\""+splitEntry[1].split("<>")[1]+"\">").getBytes());
                         }else {
