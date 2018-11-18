@@ -2,6 +2,7 @@ import com.drew.imaging.ImageMetadataReader;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.MetadataReader;
 import com.drew.metadata.exif.ExifIFD0Directory;
+import com.drew.metadata.jpeg.JpegDirectory;
 import org.json.*;
 import java.awt.*;
 import java.net.URL;
@@ -11,6 +12,73 @@ import java.util.function.Consumer;
 
 
 public class Main {
+
+    public static void attachment(JSONObject obj, Card currentCard){
+        String takenDate ="";
+        int month = 0;
+        try {
+            URL url = new URL("");
+            if(obj.getString("type").equals("addAttachmentToCard")) {
+                url = new URL(obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
+            } else if(obj.getString("type").equals("commentCard")){
+                url = new URL(obj.getJSONObject("data").getString("text"));
+            }
+            Metadata metadata = ImageMetadataReader.readMetadata(url.openStream());
+            if(metadata.containsDirectoryOfType(ExifIFD0Directory.class)) {
+                String met = metadata.getDirectoriesOfType(ExifIFD0Directory.class).iterator().next().getDate(0x132).toString();
+
+                String[] times = met.split(" ");
+                String year = times[5];
+                String day = times[2];
+                switch (times[1]) {
+                    case "Jan":
+                        month = 1;
+                        break;
+                    case "Feb":
+                        month = 2;
+                        break;
+                    case "Mar":
+                        month = 3;
+                        break;
+                    case "Apr":
+                        month = 4;
+                        break;
+                    case "May":
+                        month = 5;
+                        break;
+                    case "Jun":
+                        month = 6;
+                        break;
+                    case "Jul":
+                        month = 7;
+                        break;
+                    case "Aug":
+                        month = 8;
+                        break;
+                    case "Sep":
+                        month = 9;
+                        break;
+                    case "Oct":
+                        month = 10;
+                        break;
+                    case "Nov":
+                        month = 11;
+                        break;
+                    case "Dec":
+                        month = 12;
+                        break;
+                }
+                takenDate = year + "-" + month + "-" + day + "T";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        if(takenDate.equals(""))
+            currentCard.addAttachment(obj.getString("date"),obj.getJSONObject("memberCreator").getString("fullName"),obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
+        else currentCard.addComment(takenDate,obj.getJSONObject("memberCreator").getString("fullName"),obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
+
+    }
+
 
     public static void main(String[] args) throws IOException{
 
@@ -52,6 +120,9 @@ public class Main {
 
                     else if(objType.equals("commentCard")) {
                         String comment = objData.getString("text");
+                        if((comment.substring(comment.length()-3).equals(".jpg")) || (comment.substring(comment.length()-3).equals("png"))){
+                            attachment(obj,currentCard);
+                        }
                         if(comment.substring(0,1).equals("(") && comment.contains(")")) {
                             String[] date = comment.split("/|\\)");
 
@@ -84,63 +155,7 @@ public class Main {
                     }
 
                     else if(objType.equals("addAttachmentToCard") && objData.getJSONObject("attachment").has("url")){
-                        String takenDate ="";
-                        int month = 0;
-                        try {
-                            URL url = new URL(objData.getJSONObject("attachment").getString("url"));
-                            Metadata metadata = ImageMetadataReader.readMetadata(url.openStream());
-                            if(metadata.containsDirectoryOfType(ExifIFD0Directory.class)) {
-                                String met = metadata.getDirectoriesOfType(ExifIFD0Directory.class).iterator().next().getDate(0x132).toString();
-
-                                String[] times = met.split(" ");
-                                String year = times[5];
-                                String day = times[2];
-                                switch (times[1]) {
-                                    case "Jan":
-                                        month = 1;
-                                        break;
-                                    case "Feb":
-                                        month = 2;
-                                        break;
-                                    case "Mar":
-                                        month = 3;
-                                        break;
-                                    case "Apr":
-                                        month = 4;
-                                        break;
-                                    case "May":
-                                        month = 5;
-                                        break;
-                                    case "Jun":
-                                        month = 6;
-                                        break;
-                                    case "Jul":
-                                        month = 7;
-                                        break;
-                                    case "Aug":
-                                        month = 8;
-                                        break;
-                                    case "Sep":
-                                        month = 9;
-                                        break;
-                                    case "Oct":
-                                        month = 10;
-                                        break;
-                                    case "Nov":
-                                        month = 11;
-                                        break;
-                                    case "Dec":
-                                        month = 12;
-                                        break;
-                                }
-                                takenDate = year + "-" + month + "-" + day + "T";
-                            }
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                        if(takenDate.equals(""))
-                        currentCard.addAttachment(objDate,memberName,objData.getJSONObject("attachment").getString("url"));
-                        else currentCard.addComment(takenDate,memberName,objData.getJSONObject("attachment").getString("url"));
+                        attachment(obj,currentCard);
                     }
 
                     else if(objType.equals("updateCard") && objData.has("listAfter")){
@@ -206,14 +221,25 @@ public class Main {
                             currDate = splitEntry[0];
                         }
                         if(splitEntry[1].contains("<>")){
+                            int height,width;
+                            String output = "";
                             try{
                                 URL url = new URL(splitEntry[1].split("<>")[1]);
-                               // Metadata meta = MetadataReader(url.openStream());
+                                Metadata meta = ImageMetadataReader.readMetadata(url.openStream());
+                                height = meta.getDirectoriesOfType(JpegDirectory.class).iterator().next().getImageHeight();
+                                width = meta.getDirectoriesOfType(JpegDirectory.class).iterator().next().getImageWidth();
+                                if(height >= width){
+                                    output = "\"height:300px;\"";
+
+                                }else if(width > height){
+                                    output = "\"width:300px;\"";
+                                }
                             }catch(Exception e){
                                 e.printStackTrace();
+                                output="\"width:300px;\"";
                             }
                             fOut.write(("<li>"+splitEntry[1].split("<>")[0]
-                                    +"<br><img style=\"height:auto;width:auto;\" src=\""+splitEntry[1].split("<>")[1]+"\">").getBytes());
+                                    +"<br><img style="+output+" src=\""+splitEntry[1].split("<>")[1]+"\">").getBytes());
                         }else {
                             fOut.write(("<li>" + splitEntry[1] + "</li>").getBytes());
 
@@ -232,4 +258,3 @@ public class Main {
         });
     }
 }
-
