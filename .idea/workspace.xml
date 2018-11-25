@@ -4,6 +4,8 @@
     <list default="true" id="d4d3ff6b-8c61-43a4-851f-8c699aa6cd4f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jfile.json" beforeDir="false" afterPath="$PROJECT_DIR$/jfile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KG_Repo/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KG_Repo/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KG_Repo/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KG_Repo/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -98,9 +100,11 @@
     <session id="-1401105594">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="18" />
+          <entry key="project.closed" value="20" />
           <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.23" value="2" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.25" value="2" />
@@ -111,13 +115,13 @@
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="19" />
+          <entry key="project.opened" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="5" />
-          <entry key="iml" value="6" />
+          <entry key="iml" value="7" />
           <entry key="java" value="5" />
           <entry key="json" value="1" />
           <entry key="xml" value="3" />
@@ -126,7 +130,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="5" />
-          <entry key="IDEA_MODULE" value="6" />
+          <entry key="IDEA_MODULE" value="7" />
           <entry key="JAVA" value="5" />
           <entry key="JSON" value="1" />
           <entry key="XML" value="3" />
@@ -135,15 +139,15 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="iml" value="1" />
-          <entry key="java" value="9877" />
-          <entry key="txt" value="100" />
+          <entry key="java" value="10158" />
+          <entry key="txt" value="209" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="9875" />
-          <entry key="PLAIN_TEXT" value="100" />
+          <entry key="JAVA" value="10156" />
+          <entry key="PLAIN_TEXT" value="209" />
           <entry key="RegExp" value="2" />
         </counts>
       </usages-collector>
@@ -154,8 +158,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2924">
-              <caret line="259" column="1" selection-start-line="259" selection-start-column="1" selection-end-line="259" selection-end-column="1" />
+            <state relative-caret-position="-867">
+              <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -166,7 +170,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="969">
               <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -176,20 +180,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/KG_Repo.iml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jfile.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret column="213899" selection-start-column="213899" selection-end-column="213899" />
+            <state relative-caret-position="3638">
+              <caret column="214689" selection-start-column="214689" selection-end-column="214689" />
             </state>
           </provider>
         </entry>
@@ -237,8 +231,8 @@
         <option value="$PROJECT_DIR$/src/CardTracker.java" />
         <option value="$PROJECT_DIR$/.idea/KG_Repo.iml" />
         <option value="$PROJECT_DIR$/src/Card.java" />
-        <option value="$PROJECT_DIR$/jfile.json" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/jfile.json" />
       </list>
     </option>
   </component>
@@ -259,7 +253,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -274,21 +268,22 @@
             </path>
             <path>
               <item name="KG_Repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="KG_Repo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542571031609" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543167021657" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Kungo" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -427,7 +422,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542329770950</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added image scaling. Also added converting a comment with a link into an attachment">
+      <created>1542571342511</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1542571342511</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -443,7 +445,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.087248325" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16174497" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -452,13 +454,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.3602837" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4986577" weight="0.3602837" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32907802" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932885" weight="0.32765958" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50067115" side_tool="true" weight="0.40425533" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5013423" side_tool="true" weight="0.3602837" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49731544" weight="0.3177305" />
       <window_info anchor="bottom" id="Floobits" order="11" weight="0.16453901" />
@@ -511,7 +513,8 @@
     <MESSAGE value="Dates" />
     <MESSAGE value="Initial Push" />
     <MESSAGE value="more" />
-    <option name="LAST_COMMIT_MESSAGE" value="more" />
+    <MESSAGE value="added image scaling. Also added converting a comment with a link into an attachment" />
+    <option name="LAST_COMMIT_MESSAGE" value="added image scaling. Also added converting a comment with a link into an attachment" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/idea64.exe.vmoptions" />
@@ -521,9 +524,6 @@
           <caret line="335" selection-start-line="335" selection-end-line="335" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KG_Repo.iml">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/json/json/20180813/json-20180813.jar!/org/json/JSONObject.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -550,12 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/KG_Repo.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/drewnoakes/metadata-extractor/2.11.0/metadata-extractor-2.11.0.jar!/com/drew/imaging/ImageMetadataReader.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -563,9 +557,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/KG_Repo.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KG_Repo.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-867">
+          <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="969">
           <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -575,18 +588,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jfile.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret column="213899" selection-start-column="213899" selection-end-column="213899" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2924">
-          <caret line="259" column="1" selection-start-line="259" selection-start-column="1" selection-end-line="259" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="3638">
+          <caret column="214689" selection-start-column="214689" selection-end-column="214689" />
         </state>
       </provider>
     </entry>
