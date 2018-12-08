@@ -65,7 +65,7 @@ public class Card {
             URL u = new URL(url);
             URLConnection c = u.openConnection();
             Metadata metadata = ImageMetadataReader.readMetadata(c.getInputStream());
-            //System.out.println("Metadata: " + metadata.toString());
+            System.out.println("Metadata: " + metadata.toString());
 
         } catch (Exception e) {
             e.printStackTrace();

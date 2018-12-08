@@ -14,20 +14,21 @@ public class Main {
     public static void attachment(JSONObject obj, Card currentCard){
         String takenDate ="";
         int month = 0;
+        URL url = null;
         try {
-            URL url = new URL(obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
-//            if(obj.getString("type").equals("addAttachmentToCard")) {
-//                url = new URL(obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
 
+            if(obj.getString("type").equals("addAttachmentToCard")) {
+                url = new URL(obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
+
+            }
 //            } else if(obj.getString("type").equals("commentCard")){
 //                url = new URL(obj.getJSONObject("data").getString("text"));
-//                System.out.println(url.toString());
 //            }
 
                 Metadata metadata = ImageMetadataReader.readMetadata(url.openStream());
                 if (metadata.containsDirectoryOfType(ExifIFD0Directory.class)) {
+                  //  System.out.println(url);
                     String met = metadata.getDirectoriesOfType(ExifIFD0Directory.class).iterator().next().getDate(0x132).toString();
-
                     String[] times = met.split(" ");
                     String year = times[5];
                     String day = times[2];
@@ -74,10 +75,14 @@ public class Main {
         }catch (Exception e){
             e.printStackTrace();
         }
-        if(takenDate.equals(""))
-            currentCard.addAttachment(obj.getString("date"),obj.getJSONObject("memberCreator").getString("fullName"),obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
-
-        else currentCard.addAttachment(takenDate,obj.getJSONObject("memberCreator").getString("fullName"),obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
+        if(takenDate.equals("")) {
+            System.out.println(url + " " + obj.getString("date"));
+            currentCard.addAttachment(obj.getString("date"), obj.getJSONObject("memberCreator").getString("fullName"), obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
+        }
+        else {
+            System.out.println(url );
+            currentCard.addAttachment(takenDate,obj.getJSONObject("memberCreator").getString("fullName"),obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
+        }
 
     }
 
@@ -122,7 +127,7 @@ public class Main {
 
                     else if(objType.equals("commentCard")) {
                         String comment = objData.getString("text");
-                        if((comment.substring(comment.length()-3).equals(".jpg")) || (comment.substring(comment.length()-3).equals("png"))){
+                        if((comment.substring(comment.length()-3).equals("jpg")) || (comment.substring(comment.length()-3).equals("png")) || (comment.substring(comment.length()-3).equals("PNG")) ){
                             attachment(obj,currentCard);
                         }
                         if(comment.substring(0,1).equals("(") && comment.contains(")")) {
@@ -238,12 +243,17 @@ public class Main {
 
                                     } else if (width > height) {
                                         output = "\"width:300px;\"";
+                                    } else {
+                                        output = "\"width:auto;height:auto;\"";
                                     }
+                                } else {
+                                    output = "\"width:auto;height:auto;\"";
                                 }
                             }catch(Exception e){
                                 e.printStackTrace();
                                 output="\"width:300px;\"";
                             }
+
                             fOut.write(("<li>"+splitEntry[1].split("<>")[0]
                                     +"<br><img style="+output+" src=\""+splitEntry[1].split("<>")[1]+"\">").getBytes());
                         }else {
