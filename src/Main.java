@@ -164,7 +164,6 @@ public class Main {
                     }
 
                     else if(objType.equals("addAttachmentToCard") && objData.getJSONObject("attachment").has("url")){
-
                         attachment(obj,currentCard);
                     }
 
@@ -198,13 +197,11 @@ public class Main {
 
                 try {
                     File folder = new File(System.getProperty("user.home") + "/Desktop/TrelloCardOutput");
-
                     if (!folder.exists()) folder.mkdirs();
 
-                    String fileName=stringCardEntry.getValue().getName();
-                    fileName = fileName.replaceAll("[/\\\\?*\\u0000:<>|]","_");
+                    String filename = stringCardEntry.getValue().getName().replaceAll("[/\\\\?*\\u0000:<>|]","_");
 
-                    File out = new File(folder,  fileName + ".html");
+                    File out = new File(folder, filename + ".html");
 
                     FileOutputStream fOut = new FileOutputStream(out, true);
                     FileOutputStream fClear = new FileOutputStream(out);
