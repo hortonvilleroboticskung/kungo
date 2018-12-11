@@ -27,60 +27,61 @@ public class Main {
 
                 Metadata metadata = ImageMetadataReader.readMetadata(url.openStream());
                 if (metadata.containsDirectoryOfType(ExifIFD0Directory.class)) {
-                  //  System.out.println(url);
-                    String met = metadata.getDirectoriesOfType(ExifIFD0Directory.class).iterator().next().getDate(0x132).toString();
-                    String[] times = met.split(" ");
-                    String year = times[5];
-                    String day = times[2];
-                    switch (times[1]) {
-                        case "Jan":
-                            month = 1;
-                            break;
-                        case "Feb":
-                            month = 2;
-                            break;
-                        case "Mar":
-                            month = 3;
-                            break;
-                        case "Apr":
-                            month = 4;
-                            break;
-                        case "May":
-                            month = 5;
-                            break;
-                        case "Jun":
-                            month = 6;
-                            break;
-                        case "Jul":
-                            month = 7;
-                            break;
-                        case "Aug":
-                            month = 8;
-                            break;
-                        case "Sep":
-                            month = 9;
-                            break;
-                        case "Oct":
-                            month = 10;
-                            break;
-                        case "Nov":
-                            month = 11;
-                            break;
-                        case "Dec":
-                            month = 12;
-                            break;
+                    String met = (metadata.getDirectoriesOfType(ExifIFD0Directory.class).iterator().next().getDate(0x132) == null) ? "" : metadata.getDirectoriesOfType(ExifIFD0Directory.class).iterator().next().getDate(0x132).toString();
+                    if (!met.equals("")) {
+                        String[] times = met.split(" ");
+                        String year = times[5];
+                        String day = times[2];
+                        switch (times[1]) {
+                            case "Jan":
+                                month = 1;
+                                break;
+                            case "Feb":
+                                month = 2;
+                                break;
+                            case "Mar":
+                                month = 3;
+                                break;
+                            case "Apr":
+                                month = 4;
+                                break;
+                            case "May":
+                                month = 5;
+                                break;
+                            case "Jun":
+                                month = 6;
+                                break;
+                            case "Jul":
+                                month = 7;
+                                break;
+                            case "Aug":
+                                month = 8;
+                                break;
+                            case "Sep":
+                                month = 9;
+                                break;
+                            case "Oct":
+                                month = 10;
+                                break;
+                            case "Nov":
+                                month = 11;
+                                break;
+                            case "Dec":
+                                month = 12;
+                                break;
+                        }
+                        takenDate = year + "-" + month + "-" + day + "T";
                     }
-                    takenDate = year + "-" + month + "-" + day + "T";
                 }
         }catch (Exception e){
             e.printStackTrace();
         }
         if(takenDate.equals("")) {
-            System.out.println(url + " " + obj.getString("date"));
+            //System.out.println(url + " " + obj.getString("date"));
             currentCard.addAttachment(obj.getString("date"), obj.getJSONObject("memberCreator").getString("fullName"), obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
         }
         else {
-            System.out.println(url );
+            //System.out.println(url );
             currentCard.addAttachment(takenDate,obj.getJSONObject("memberCreator").getString("fullName"),obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
         }
 
@@ -215,10 +216,11 @@ public class Main {
                         fOut.write(("<h4 style=\"display:inline;padding-left:75px;\">Labels: "
                                 + c.getLabels().toString().substring(1, c.getLabels().toString().length() - 1) + "</h4>").getBytes());
                     }
-
                     fOut.write("<br><hr>".getBytes());
-
                     c.getRecord().sort(null);
+
+
+
                     String currDate = "";
                     for(int i = 0; i < c.getRecord().size(); i++) {
                         String entry = c.getRecord().get(i);
@@ -229,7 +231,8 @@ public class Main {
                             currDate = splitEntry[0];
                         }
                         if(splitEntry[1].contains("<>")){
-                            int height,width;
+                            int height = 300;
+                            int width = 300;
                             String output = "";
                             try{
                                 URL url = new URL(splitEntry[1].split("<>")[1]);
@@ -237,7 +240,7 @@ public class Main {
                                 if(meta.containsDirectoryOfType(JpegDirectory.class)) {
                                     height = meta.getDirectoriesOfType(JpegDirectory.class).iterator().next().getImageHeight();
                                     width = meta.getDirectoriesOfType(JpegDirectory.class).iterator().next().getImageWidth();
-
+                                    //System.out.println(width);
                                     if (height >= width) {
                                         output = "\"height:300px;\"";
 
@@ -247,7 +250,7 @@ public class Main {
                                         output = "\"width:auto;height:auto;\"";
                                     }
                                 } else {
-                                    output = "\"width:auto;height:auto;\"";
+                                        output = "\"width:auto;height:auto;\"";
                                 }
                             }catch(Exception e){
                                 e.printStackTrace();
