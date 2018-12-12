@@ -250,10 +250,10 @@ public class Main {
                                     } else if (width > height) {
                                         output = "\"width:300px;\"";
                                     } else {
-                                        output = "\"width:auto;height:auto;\"";
+                                        output = "\"width:300px;height:auto;\"";
                                     }
                                 } else {
-                                        output = "\"width:auto;height:auto;\"";
+                                        output = "\"width:300px;height:auto;\"";
                                 }
                             }catch(Exception e){
                                 e.printStackTrace();
