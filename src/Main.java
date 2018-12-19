@@ -21,10 +21,6 @@ public class Main {
                 url = new URL(obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
 
             }
-//            } else if(obj.getString("type").equals("commentCard")){
-//                url = new URL(obj.getJSONObject("data").getString("text"));
-//            }
-
                 Metadata metadata = ImageMetadataReader.readMetadata(url.openStream());
                 if (metadata.containsDirectoryOfType(ExifIFD0Directory.class)) {
                     String met = (metadata.getDirectoriesOfType(ExifIFD0Directory.class).iterator().next().getDate(0x132) == null) ? "" : metadata.getDirectoriesOfType(ExifIFD0Directory.class).iterator().next().getDate(0x132).toString();
@@ -77,11 +73,9 @@ public class Main {
             e.printStackTrace();
         }
         if(takenDate.equals("")) {
-            //System.out.println(url + " " + obj.getString("date"));
             currentCard.addAttachment(obj.getString("date"), obj.getJSONObject("memberCreator").getString("fullName"), obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
         }
         else {
-            //System.out.println(url );
             currentCard.addAttachment(takenDate,obj.getJSONObject("memberCreator").getString("fullName"),obj.getJSONObject("data").getJSONObject("attachment").getString("url"));
         }
 
@@ -90,7 +84,37 @@ public class Main {
 
     public static void main(String[] args) throws IOException{
 
-        FileInputStream fstream = new FileInputStream(".\\jfile.json");
+        File jsonFolder = new File(".\\src\\jsonFiles");
+
+        ArrayList<String> names = new ArrayList<>();
+        System.out.println("Avaliables Files:");
+
+        for(File f : jsonFolder.listFiles()){
+            names.add(f.getName().toLowerCase());
+            String fileName = f.getName();
+            String toCapLetter = fileName.substring(0,1);
+            String remainder = fileName.substring(1);
+            String capLetter = toCapLetter.toUpperCase();
+            System.out.println("\t"+capLetter+remainder);
+        }
+
+
+        System.out.println("Please choose a file: ");
+        Scanner userInput = new Scanner(System.in);
+        final String[] input = new String[1];
+        input[0] = userInput.nextLine();
+        while(!names.contains(input[0].toLowerCase())){
+            System.out.println("Please enter a valid file name!");
+            System.out.println("Please choose a file: ");
+            input[0] = userInput.nextLine();
+        }
+
+        String toCapLetter = input[0].substring(0,1);
+        String remainder = input[0].substring(1);
+        String capLetter = toCapLetter.toUpperCase();
+        String total = capLetter+remainder;
+
+        FileInputStream fstream = new FileInputStream(".\\src\\jsonFiles\\"+total);
         BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
         JSONObject jsonfile = new JSONObject(br.readLine());
         JSONArray actions = jsonfile.getJSONArray("actions");
@@ -196,7 +220,7 @@ public class Main {
             public void accept(Map.Entry<String, Card> stringCardEntry) {
 
                 try {
-                    File folder = new File(System.getProperty("user.home") + "/Desktop/TrelloCardOutput");
+                    File folder = new File(System.getProperty("user.home") + "/Desktop/TrelloCardOutput/" + input[0]);
                     if (!folder.exists()) folder.mkdirs();
 
                     String filename = stringCardEntry.getValue().getName().replaceAll("[/\\\\?*\\u0000:<>|]","_");
@@ -212,13 +236,17 @@ public class Main {
 
                     Card c = stringCardEntry.getValue();
 
-                    fOut.write("<!--DOCTYPE HTML--><html><head><style>li{margin-bottom:15px;}</style></head><body style=font-family:arial;color:red>".getBytes());
+                    fOut.write("<!--DOCTYPE HTML--><html><head><style>li{margin-bottom:5px;}</style></head><body style=font-family:arial;color:black>".getBytes());
 
-                    fOut.write(("<h1 style=\"display:inline;\">" + c.getName() + "</h1>").getBytes());
+                    fOut.write(("<center><h1 style=\" display:inline;\"> " + total + "</h1></center>").getBytes());
+
+                    fOut.write(("<h2 style=\"display:inline;\">" + c.getName() + "</h2>").getBytes());
+
                     if (c.getLabels().size() != 0){
                         fOut.write(("<h4 style=\"display:inline;padding-left:75px;\">Labels: "
                                 + c.getLabels().toString().substring(1, c.getLabels().toString().length() - 1) + "</h4>").getBytes());
                     }
+
                     fOut.write("<br><hr>".getBytes());
                     c.getRecord().sort(null);
 
@@ -253,7 +281,7 @@ public class Main {
                                         output = "\"width:300px;height:auto;\"";
                                     }
                                 } else {
-                                        output = "\"width:300px;height:auto;\"";
+                                        output = "\"width: 300px;height:auto;\"";
                                 }
                             }catch(Exception e){
                                 e.printStackTrace();
