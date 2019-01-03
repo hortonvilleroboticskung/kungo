@@ -243,10 +243,11 @@ public class Main {
                     fOut.write(("<h2 style=\"display:inline;\">" + c.getName() + "</h2>").getBytes());
 
                     if (c.getLabels().size() != 0){
-                        fOut.write(("<h4 style=\"display:inline;padding-left:75px;\">Labels: "
+                        fOut.write(("<h4 style=\"display:inline;padding-left:75px;padding-right:75px\">Labels: "
                                 + c.getLabels().toString().substring(1, c.getLabels().toString().length() - 1) + "</h4>").getBytes());
                     }
 
+                    fOut.write(("<img style=\"position:absolute;left:5px;top:5px;\" src=\"C:\\Users\\heuve\\Desktop\\TrelloCardOutput\\hortonville_robotics_logo.jpg\">").getBytes());
                     fOut.write("<br><hr>".getBytes());
                     c.getRecord().sort(null);
 
